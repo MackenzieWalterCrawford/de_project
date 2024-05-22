@@ -52,15 +52,25 @@ infra-config:
 
 ####################################################################################################################
 # Create tables in Warehouse
+spectrum-migration:
+	./spectrum_migrate.sh
 
 db-migration:
 	@read -p "Enter migration name:" migration_name; docker exec webserver yoyo new ./migrations -m "$$migration_name"
+
+redshift-migration:
+	docker exec -ti webserver yoyo apply --no-config-file --database redshift://$$(terraform -chdir=./terraform output -raw redshift_user):$$(terraform -chdir=./terraform output -raw redshift_password)@$$(terraform -chdir=./terraform output -raw redshift_dns_name):5439/dev ./migrations
+
+redshift-rollback:
+	docker exec -ti webserver yoyo rollback --no-config-file --database redshift://$$(terraform -chdir=./terraform output -raw redshift_user):$$(terraform -chdir=./terraform output -raw redshift_password)@$$(terraform -chdir=./terraform output -raw redshift_dns_name):5439/dev ./migrations
 
 warehouse-migration:
 	docker exec webserver yoyo develop --no-config-file --database postgres://sdeuser:sdepassword1234@warehouse:5432/finance ./migrations
 
 warehouse-rollback:
 	docker exec webserver yoyo rollback --no-config-file --database postgres://sdeuser:sdepassword1234@warehouse:5432/finance ./migrations
+
+warehouse-data-migration: spectrum-migration redshift-migration
 
 ####################################################################################################################
 # Port forwarding to local machine
