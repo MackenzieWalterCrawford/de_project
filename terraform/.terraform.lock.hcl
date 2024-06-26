@@ -1,6 +1,28 @@
 # This file is maintained automatically by "terraform init".
 # Manual edits may be lost in future updates.
 
+provider "registry.terraform.io/brainly/redshift" {
+  version     = "1.0.2"
+  constraints = "1.0.2"
+  hashes = [
+    "h1:Fzq5h25RzHglgtOHCb8RKaksawrcd668BwhjViWtTtU=",
+    "zh:17c4807810ffe0f232e51aecc87f3b263c01b48f301d142c94f8baeb019b0964",
+    "zh:1a7a3b7196bcb8cd4c13f2d77d3ded3051571fdeae22b84efb4726fd1d2b8331",
+    "zh:350e9e35e98f2f53fece7fc0cac76dc004857b2c23c92e2ba5a555a9de45b37e",
+    "zh:4d6c28ad5565b993153ad8edde026c03ba607109b014448734961a00337c8006",
+    "zh:4f7e9066986ecf80a98bef054f095423e53e427d4345507af05e480a2c357c15",
+    "zh:61f4e859b09aed1eba4e541ea5cc609936e65aa299a2f3c36001944448cf8d4c",
+    "zh:68a7a2a9bf2f03d8ce694c9153d91916b13a09022e6485acdd6c18332c13d272",
+    "zh:6df8f3d964f6110baab95808d1dab2898fb10a2417289cb805b17bd75ab2387d",
+    "zh:95ef29da4f135ce3b42b5f93a2c091cdffdea3d339e5e18edc2aef1d33337cae",
+    "zh:9dc024ec1d9d9b5faf3d85de97db4d9b352e724e923c0f9370cd1e978b156f58",
+    "zh:c591158adaedd4bfb03e19dbba837fbb6c6a1b9235b339356384c756b75e36ef",
+    "zh:ed3624f6bd349f1dc1576c60029471755061f0d7940de908cea590ecdd01c147",
+    "zh:f68fa4f709676b9a2bcaf77359fbfe86c9b28e945646a8007e8077be84d440f4",
+    "zh:fad62d1a90986a6e98e4e057a815c342e77076cff98138bda0341acf0cd7ab7e",
+  ]
+}
+
 provider "registry.terraform.io/hashicorp/aws" {
   version     = "4.36.1"
   constraints = "~> 4.16"
